@@ -43,7 +43,7 @@ def check_bert_models():
         kwargs = {"token": config.openi_token} if config.openi_token else {}
         openi.login(**kwargs)
 
-    with open("./bert/bert_models.json", "r") as fp:
+    with open(Path(__file__).resolve().parent.parent.joinpath("bert", "bert_models.json"), "r") as fp:
         models = json.load(fp)
         for k, v in models.items():
             local_path = Path("./bert").joinpath(k)

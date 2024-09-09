@@ -1,9 +1,10 @@
 import pickle
 import os
 import re
+from pathlib import Path
+
 from g2p_en import G2p
 from transformers import DebertaV2Tokenizer
-
 from text import symbols
 from text.symbols import punctuation
 
@@ -11,7 +12,7 @@ current_file_path = os.path.dirname(__file__)
 CMU_DICT_PATH = os.path.join(current_file_path, "cmudict.rep")
 CACHE_PATH = os.path.join(current_file_path, "cmudict_cache.pickle")
 _g2p = G2p()
-LOCAL_PATH = "./bert/deberta-v3-large"
+LOCAL_PATH = str(Path(__file__).resolve().parent.parent.joinpath("bert", "deberta-v3-large"))
 tokenizer = DebertaV2Tokenizer.from_pretrained(LOCAL_PATH)
 
 arpa = {
