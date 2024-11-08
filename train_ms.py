@@ -456,28 +456,32 @@ def train_and_evaluate(
         en_bert = en_bert.cuda(local_rank, non_blocking=True)
 
         with autocast(enabled=hps.train.bf16_run, dtype=torch.bfloat16):
-            (
-                y_hat,
-                l_length,
-                attn,
-                ids_slice,
-                x_mask,
-                z_mask,
-                (z, z_p, m_p, logs_p, m_q, logs_q),
-                (hidden_x, logw, logw_, logw_sdp),
-                g,
-            ) = net_g(
-                x,
-                x_lengths,
-                spec,
-                spec_lengths,
-                speakers,
-                tone,
-                language,
-                bert,
-                ja_bert,
-                en_bert,
-            )
+            try:
+                (
+                    y_hat,
+                    l_length,
+                    attn,
+                    ids_slice,
+                    x_mask,
+                    z_mask,
+                    (z, z_p, m_p, logs_p, m_q, logs_q),
+                    (hidden_x, logw, logw_, logw_sdp),
+                    g,
+                ) = net_g(
+                    x,
+                    x_lengths,
+                    spec,
+                    spec_lengths,
+                    speakers,
+                    tone,
+                    language,
+                    bert,
+                    ja_bert,
+                    en_bert,
+                )
+            except RuntimeError as err:
+                print(f"异常{err=}，跳过")
+                continue
             mel = spec_to_mel_torch(
                 spec,
                 hps.data.filter_length,
