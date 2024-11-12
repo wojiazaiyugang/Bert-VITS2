@@ -35,3 +35,11 @@ VITS2 Backbone with multilingual bert
 </a>
 
 [//]: # (# 本项目所有代码引用均已写明，bert部分代码思路来源于[AI峰哥]&#40;https://www.bilibili.com/video/BV1w24y1c7z9&#41;，与[vits_chinese]&#40;https://github.com/PlayVoice/vits_chinese&#41;无任何关系。欢迎各位查阅代码。同时，我们也对该开发者的[碰瓷，乃至开盒开发者的行为]&#40;https://www.bilibili.com/read/cv27101514/&#41;表示强烈谴责。)
+
+分别依次输入以下命令
+2.1
+python resample.py    #对音频进行重采样
+python preprocess_text.py    #划分标注数据
+python bert_gen.py    #生成bert
+python emo_gen.py    #生成emo
+python train_ms.py # 训练
