@@ -17,7 +17,7 @@ resample:
   sampling_rate: 44100
   # 音频文件输入路径，重采样会将该路径下所有.wav音频文件重采样
   # 请填入相对于datasetPath的相对路径
-  in_dir: "/home/yujiannan/Projects/Alice_split_toolset/dataset/liyilun/" # 相对于根目录的路径为 /datasetPath/in_dir
+  in_dir: "/home/yujiannan/Projects/Alice_split_toolset/dataset/qijian/" # 相对于根目录的路径为 /datasetPath/in_dir
   # 音频文件重采样后输出路径
   out_dir: "/home/yujiannan/Projects/Bert-VITS2/audios/wavs"
 
@@ -26,7 +26,7 @@ resample:
 # 注意， “:” 后需要加空格
 preprocess_text:
   # 原始文本文件路径，文本格式应为{wav_path}|{speaker_name}|{language}|{text}。
-  transcription_path: "/home/yujiannan/Projects/Alice_split_toolset/dataset/liyilun/dataset_mapping.list"
+  transcription_path: "/home/yujiannan/Projects/Alice_split_toolset/dataset/qijian/dataset_mapping.list"
   # 数据清洗后文本路径，可以不填。不填则将在原始文本目录生成
   cleaned_path: ""
   # 训练集路径
